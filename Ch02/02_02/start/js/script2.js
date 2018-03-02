@@ -8,5 +8,6 @@
       console.log("Problem");
     }
     console.log(response);
+    console.log(response.json());
   });
 })();
