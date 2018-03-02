@@ -1,6 +1,6 @@
 (() => {
   const url = "http://api.openweathermap.org/data/2.5/weather?q=London,England";
-  const apiKey = "05e62f86576a85bc20cce0e46674216f"; // Replace "APIKEY" with your own API key; otherwise, your HTTP request will not work
+  const apiKey = "05e62f86576a85bc20cce0e46674216f"; // Replace "API KEY" with your own API key; otherwise, your HTTP request will not work
   let httpRequest;
   makeRequest();
 
@@ -18,7 +18,9 @@
   function responseMethod() {
     if (httpRequest.readyState === 4) {
       if (httpRequest.status === 200) {
+        updateUISuccess(httpRequest.responseText);
       } else {
+        updateUIError();
       }
     }
   }
@@ -33,5 +35,12 @@
     const degFInt = Math.floor(degF);
     const weatherBox = document.getElementById("weather");
     weatherBox.innerHTML = `<p>${degCInt}&#176; C / ${degFInt}&#176; F</p> <p>${condition}</p>`;
+  }
+
+  // handle XHR error
+
+  function updateUIError() {
+    const weatherBox = document.getElementById("weather");
+    weatherBox.className = "hidden";
   }
 })();
