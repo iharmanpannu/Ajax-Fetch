@@ -6,9 +6,11 @@
   // jquery AJAX request
   $.get(`${url}&appid=${apiKey}`)
     .done(function(response) {
-      updateUISuccess();
+      updateUISuccess(response);
     })
-    .fail(updateUIError());
+    .fail(function(response) {
+      updateUIError();
+    });
 
   // Handle XHR success
   function updateUISuccess(response) {
@@ -17,8 +19,13 @@
     const degCInt = Math.floor(degC);
     const degF = degC * 1.8 + 32;
     const degFInt = Math.floor(degF);
-    const weatherBox = document.getElementById("weather");
     weatherBox.innerHTML = `<p>${degCInt}&#176; C / ${degFInt}&#176; F</p> <p>${condition}</p>`;
+    // const weatherBox = document.getElementById("weather");
+    // weatherBox.innerHTML = `<p>${degCInt}&#176; C / ${degFInt}&#176; F</p> <p>${condition}</p>`;
+    const $weatherBox = $("weather");
+    $weatherBox.append(
+      `<p>${degCInt}&#176; C / ${degFInt}&#176; F</p> <p>${condition}</p>`
+    );
   }
 
   // handle XHR error
