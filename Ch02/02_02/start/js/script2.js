@@ -8,7 +8,7 @@
     .done(function(response) {
       updateUISuccess(response);
     })
-    .fail(function(response) {
+    .fail(function(error) {
       updateUIError();
     });
 
@@ -21,7 +21,7 @@
     const degFInt = Math.floor(degF);
     // const weatherBox = document.getElementById("weather");
     // weatherBox.innerHTML = `<p>${degCInt}&#176; C / ${degFInt}&#176; F</p> <p>${condition}</p>`;
-    const $weatherBox = $("weather");
+    const $weatherBox = $("#weather");
     $weatherBox.append(
       `<p>${degCInt}&#176; C / ${degFInt}&#176; F</p> <p>${condition}</p>`
     );
@@ -32,7 +32,7 @@
   function updateUIError() {
     // const weatherBox = document.getElementById("weather");
     // weatherBox.className = "hidden";
-    const $weatherBox = $("weather");
+    const $weatherBox = $("#weather");
     $weatherBox.addClass("hidden");
   }
 })();
