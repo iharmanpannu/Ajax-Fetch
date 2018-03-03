@@ -19,7 +19,6 @@
     const degCInt = Math.floor(degC);
     const degF = degC * 1.8 + 32;
     const degFInt = Math.floor(degF);
-    weatherBox.innerHTML = `<p>${degCInt}&#176; C / ${degFInt}&#176; F</p> <p>${condition}</p>`;
     // const weatherBox = document.getElementById("weather");
     // weatherBox.innerHTML = `<p>${degCInt}&#176; C / ${degFInt}&#176; F</p> <p>${condition}</p>`;
     const $weatherBox = $("weather");
@@ -31,7 +30,9 @@
   // handle XHR error
 
   function updateUIError() {
-    const weatherBox = document.getElementById("weather");
-    weatherBox.className = "hidden";
+    // const weatherBox = document.getElementById("weather");
+    // weatherBox.className = "hidden";
+    const $weatherBox = $("weather");
+    $weatherBox.addClass("hidden");
   }
 })();
